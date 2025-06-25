@@ -1,0 +1,105 @@
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message {
+  animation: fadeIn 0.3s ease-out;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-message {
+  border-left: 3px solid #d86464;
+}
+
+.ai-message {
+  border-left: 3px solid #796796;
+}
+
+/* Typing indicator animation */
+.typing-indicator::after {
+  content: '...';
+  display: inline-block;
+  width: 1em;
+  animation: typing 1.5s infinite;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+@keyframes typing {
+  0% { width: 0; }
+  50% { width: 0.5em; }
+  100% { width: 1em; }
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Custom checkbox */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid #6b7280;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #db2777;
+  border-color: #db2777;
+}
+
+input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  color: white;
+  font-size: 0.8em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Focus states */
+input:focus, button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(219, 39, 119, 0.5);
+}
+
+/* Hover effects */
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+button:active {
+  transform: translateY(0);
+}

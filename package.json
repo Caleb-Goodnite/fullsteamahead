@@ -1,0 +1,103 @@
+{
+  "name": "sus",
+  "productName": "sus",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win",
+    "lint": "echo \"No linting configured\""
+  },
+  "build": {
+    "appId": "com.steamyscribe.app",
+    "productName": "The Steamy Scribe",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": ["portable"],
+      "icon": "icons/icon.jpg"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      ".env"
+    ],
+    "extraMetadata": {
+      "main": "src/index.js"
+    },
+    "asar": true,
+    "npmRebuild": false
+  },
+  "keywords": [],
+  "author": {
+    "name": "caleb-goodnite",
+    "email": "calebgoodnite@gmail.com"
+  },
+  "license": "NONE",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "electron-squirrel-startup": "^1.0.1"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.8.1",
+    "@electron-forge/maker-deb": "^7.8.1",
+    "@electron-forge/maker-dmg": "^7.8.1",
+    "@electron-forge/maker-rpm": "^7.8.1",
+    "@electron-forge/maker-squirrel": "^7.8.1",
+    "@electron-forge/maker-zip": "^7.8.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
+    "@electron-forge/plugin-fuses": "^7.8.1",
+    "@electron/fuses": "^1.8.0",
+    "@electron/rebuild": "^3.7.1",
+    "electron": "37.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "osxSign": {},
+        "osxNotarize": {
+          "appleId": "${process.env.APPLE_ID}",
+          "appleIdPassword": "${process.env.APPLE_ID_PASSWORD}",
+          "teamId": "${process.env.APPLE_TEAM_ID}"
+        },
+        "icon": "./icons/icon.jpg"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "TheSteamyScribe"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin",
+            "linux"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "format": "ULFO"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}
